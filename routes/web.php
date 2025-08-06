@@ -1,15 +1,22 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view("home");
+// Route::get('/', function () {
+//     return view("home");
+// });
+
+Route::get('/', function() {
+    return redirect('/admin/home');
 });
 
 Route::prefix("admin")->group(function() {
-    Route::get("/products", function() {
-        return view("admin.products.IndexProduct");
-    });
+
+    Route::get('/home', [AdminController::class, 'home']);
+
+    Route::get('/products', [ProductController::class, 'index']);
 
     Route::get("/carts", function() {
         return view("admin.cart.IndexCart");

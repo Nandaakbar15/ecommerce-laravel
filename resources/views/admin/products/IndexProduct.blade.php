@@ -1,18 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row">
-            <h1>Products Data Admin</h1>
+@extends('admin.layouts.main')
+
+@section('content')
+    <div class="row">
+        <h1>Data Produk</h1>
+        <h2><a href="/admin/addnewproducts" class="btn btn-primary">Tambah Produk</a></h2>
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nama Produk</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Stok</th>
+                        <th scope="col">Jumlah</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($products as $data)
+                        <tr>
+                            <td>{{ $data['name_product'] }}</td>
+                            <td>{{ $data['price'] }}</td>
+                            <td>{{ $data['stock'] }}</td>
+                            <td>{{ $data['quantity'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</body>
-</html>
+@endsection
