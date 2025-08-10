@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -30,4 +31,12 @@ Route::prefix("admin")->group(function() {
         return view("admin.orders.IndexOrder");
     });
 
+});
+
+Route::prefix("customer")->group(function() {
+    Route::get("/home", [CustomerController::class, 'home']);
+
+    Route::get('/listproducts', [CustomerController::class, 'listproducts']);
+
+    Route::get('/carts', [CustomerController::class, 'listcarts']);
 });
