@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
-use App\Models\Product;
 
-class ProductController extends Controller
+class EmployeeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title = "E-Commerce | Data Produk Admin";
-        $products = Product::paginate(5);
-        return view("admin.products.IndexProduct", [
-            'title' => $title,
-            'products' => $products
+        $title = "E-Commerce | Data Karyawan Admin";
+        $employee = Employee::paginate(5);
+
+        return view("admin.employee.IndexEmployee", [
+            "title" => $title,
+            "employee" => $employee
         ]);
     }
 
@@ -26,7 +26,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("admin.products.TambahProducts");
+        $title = "E-Commerce | Tambah Data Karyawan";
+        return view("admin.employee.TambahKaryawan", [
+            'title' => $title
+        ]);
     }
 
     /**
@@ -40,7 +43,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $id)
+    public function show(Employee $employee)
     {
         //
     }
@@ -48,7 +51,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $id)
+    public function edit(Employee $employee)
     {
         //
     }
@@ -56,7 +59,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $id)
+    public function update(Request $request, Employee $employee)
     {
         //
     }
@@ -64,7 +67,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $id)
+    public function destroy(Employee $employee)
     {
         //
     }

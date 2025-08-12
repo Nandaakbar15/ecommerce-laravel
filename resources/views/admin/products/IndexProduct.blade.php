@@ -9,21 +9,32 @@
                 <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">Gambar Produk</th>
                         <th scope="col">Nama Produk</th>
-                        <th scope="col">Harga</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Stok</th>
-                        <th scope="col">Jumlah</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $data)
                         <tr>
-                            <td>{{ $data['name_product'] }}</td>
-                            <td>{{ $data['price'] }}</td>
-                            <td>{{ $data['stock'] }}</td>
-                            <td>{{ $data['quantity'] }}</td>
+                            <td>{{ $data->image }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->description }}</td>
+                            <td>{{ $data->stock }}</td>
+                            <td>
+                                <a href="/admin/editProduct" class="btn btn-info">Edit</a>
+                            </td>
+                            <td>
+                                <form action="/admin/deleteProduct/{{ $data->id_product }}" class="d-inline" method="POST">
+                                    @method("delete")
+                                    <button class="btn btn-danger" onclick="return confirm('Yakin mau hapus data ini?')">Hapus</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
+                    {{ $products->links() }}
                 </tbody>
                 </table>
             </div>

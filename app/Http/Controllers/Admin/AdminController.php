@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function home() {
-        return view("admin.layouts.home");
+        $title = "E-Commerce | Admin";
+        return view("admin.layouts.home", [
+            "title" => $title
+        ]);
     }
 }
