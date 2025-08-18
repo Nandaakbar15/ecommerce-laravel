@@ -9,6 +9,7 @@
                 <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">ID Produk</th>
                         <th scope="col">Gambar Produk</th>
                         <th scope="col">Nama Produk</th>
                         <th scope="col">Description</th>
@@ -19,6 +20,7 @@
                 <tbody>
                     @foreach ($products as $data)
                         <tr>
+                            <td>{{ $data->id_produk }}</td>
                             <td>{{ $data->image }}</td>
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->description }}</td>

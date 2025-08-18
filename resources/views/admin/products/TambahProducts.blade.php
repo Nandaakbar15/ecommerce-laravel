@@ -50,6 +50,6 @@
                 </form>
             </div>
         </div>
-        <h2><a href="/admin/home" class="btn btn-secondary">Kembali</a></h2>
+        <h2><a href="/admin/products" class="btn btn-secondary">Kembali</a></h2>
     </div>
 @endsection

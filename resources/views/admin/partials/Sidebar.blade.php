@@ -35,6 +35,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="/admin/categories">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Data Kategori</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="/admin/employee">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data Karyawan</span>
