@@ -6,6 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <form action="/admin/addProduct" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Produk</label>
                         <input type="email" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
@@ -37,7 +38,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">Deskripsi</label>
+                        <label for="image" class="form-label">Image</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image">
 
                         @error('image')
@@ -46,7 +47,7 @@
                             </div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
                 </form>
             </div>
         </div>
