@@ -6,7 +6,7 @@
         <input type="hidden" name="gambarLama" value="{{ $product->image }}">
         <div class="card">
             <div class="card-body">
-                <form action="/admin/updateProduct" method="POST" enctype="multipart/form-data">
+                <form action="/admin/update-product" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Produk</label>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="mb-3">
                         @if ($product->image)
-                            <img src="{{ asset($product->image) }}" alt="" width="300px" height="200px">
+                            <img src="{{ asset('images/' . $product->image) }}" alt="" width="200px" height="200px">
                         @else
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                         @endif
@@ -53,7 +53,7 @@
                             @enderror
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
                 </form>
             </div>
         </div>

@@ -37,15 +37,16 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validateData = $request->validate([
+            'nama_karyawan' => 'required|string',
+            'alamat' => 'required|string',
+            'no_hp' => 'required|string',
+            'jabatan' => 'required|string'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Employee $employee)
-    {
-        //
+        Employee::create($validateData);
+
+        return redirect('/admin/employee')->with('success', 'Berhasil menambahkan data karyawan');
     }
 
     /**
@@ -53,7 +54,11 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        $title = "E-Commerce | Form Ubah Data Karyawan";
+        return view("admin.employee.UbahKaryawan", [
+            'employee' => $employee,
+            'title' => $title
+        ]);
     }
 
     /**

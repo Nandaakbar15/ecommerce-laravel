@@ -10,7 +10,7 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     protected $table = "product";
     protected $primaryKey = "id_produk";
-    protected $fillable = ['id_category', 'name', 'description', 'stock', 'image'];
+    protected $fillable = ['id_kategori', 'name', 'description', 'stock', 'image'];
 
     public function categories() {
         return $this->belongsTo(Category::class, 'id_kategori', 'id_kategori');

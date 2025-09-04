@@ -5,7 +5,8 @@
         <h1>Form Tambah Kategori</h1>
         <div class="card">
             <div class="card-body">
-                <form action="/admin/addcategories" method="POST">
+                <form action="/admin/add-categories" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Kategori</label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">

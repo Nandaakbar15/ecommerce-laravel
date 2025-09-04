@@ -38,7 +38,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|string',
+            'quantity' => 'required|integer'
+        ]);
+
+        Category::create($validateData);
+
+        return redirect('/admin/categories')->with('success', 'Berhasil menambahkan kategori!');
     }
 
     /**

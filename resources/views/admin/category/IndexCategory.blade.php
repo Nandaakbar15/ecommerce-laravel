@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <h1>Data Category</h1>
-        <h2><a href="/admin/addnewcategories" class="btn btn-primary">Tambah Kategori</a></h2>
+        <h2><a href="/admin/create-categories" class="btn btn-primary">Tambah Kategori</a></h2>
         <div class="card">
             <div class="card-body">
                 <table class="table">

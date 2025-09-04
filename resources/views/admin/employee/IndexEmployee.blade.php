@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <h1>Data Karyawan</h1>
-        <h2><a href="/admin/addnewkaryawan" class="btn btn-primary">Tambah Karyawan</a></h2>
+        <h2><a href="/admin/createEmployee" class="btn btn-primary">Tambah Karyawan</a></h2>
         <div class="card">
             <div class="card-body">
                 <table class="table">
@@ -24,10 +24,10 @@
                             <td>{{ $data->no_hp }}</td>
                             <td>{{ $data->jabatan }}</td>
                             <td>
-                                <a href="/admin/editKaryawan/{{ $data->id }}" class="btn btn-info">Edit</a>
+                                <a href="/admin/edit-employee/{{ $data->id }}" class="btn btn-info">Edit</a>
                             </td>
                             <td>
-                                <form action="/admin/deleteKaryawan/{{ $data->id }}" method="POST">
+                                <form action="/admin/delete-employee/{{ $data->id }}" method="POST">
                                     @method('delete')
                                     <button class="btn btn-danger" onclick="return confirm('Yakin mau hapus data ini?')">Hapus</button>
                                 </form>
