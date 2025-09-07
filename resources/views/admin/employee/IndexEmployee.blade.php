@@ -9,6 +9,7 @@
                 <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">ID Karyawan</th>
                         <th scope="col">Nama Karyawan</th>
                         <th scope="col">Alamat</th>
                         <th scope="col">Nomor HP</th>
@@ -19,6 +20,7 @@
                 <tbody>
                     @foreach ($employee as $data)
                         <tr>
+                            <td>{{ $data->id }}</td>
                             <td>{{ $data->nama_karyawan }}</td>
                             <td>{{ $data->alamat }}</td>
                             <td>{{ $data->no_hp }}</td>

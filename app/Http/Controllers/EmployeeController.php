@@ -66,7 +66,16 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $validateData = $request->validate([
+            'nama_karyawan' => 'required|string',
+            'alamat' => 'required|string',
+            'no_hp' => 'required|string',
+            'jabatan' => 'required|string'
+        ]);
+
+        $employee->update($validateData);
+
+        return redirect('/admin/employee')->with('success', 'Berhasil mengubah data karyawan!');
     }
 
     /**

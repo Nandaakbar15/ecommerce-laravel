@@ -22,10 +22,10 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->quantity }}</td>
                             <td>
-                                <a href="/admin/ubahkategori/{{ $data->id_kategori }}" class="btn btn-info">Edit</a>
+                                <a href="/admin/edit-categories/{{ $data->id_kategori }}" class="btn btn-info">Edit</a>
                             </td>
                             <td>
-                                <form action="/admin/deletekategori/{{ $data->id_kategori }}">
+                                <form action="/admin/delete-categories/{{ $data->id_kategori }}">
                                     @method('delete')
                                     <button class="btn btn-danger" onclick="return confirm('Yakin mau hapus data ini?')">Hapus</button>
                                 </form>

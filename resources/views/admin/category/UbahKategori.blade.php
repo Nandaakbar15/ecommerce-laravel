@@ -5,12 +5,12 @@
         <h1>Form Ubah Kategori</h1>
         <div class="card">
             <div class="card-body">
-                <form action="/admin/updatecategories/{{ $categories->id_kategori }}" method="POST">
+                <form action="/admin/update-categories/{{ $category->id_kategori }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Kategori</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" autofocus value="{{ old('name', $categori->name) }}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" autofocus value="{{ old('name', $category->name) }}">
 
                         @error('name')
                             <div class="is-invalid">

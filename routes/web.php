@@ -29,11 +29,18 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/createEmployee', [EmployeeController::class, 'create']);
         Route::post('/add-employee', [EmployeeController::class, 'store']);
         Route::get('/edit-employee/{employee}', [EmployeeController::class, 'edit']);
+        Route::put('/update-employee/{employee}', [EmployeeController::class, 'update']);
+        Route::delete('/delete-employee/{employee}', [EmployeeController::class, 'destroy']);
 
         // categories
         Route::get('/categories', [CategoryController::class, 'index']);
         Route::get('/create-categories', [CategoryController::class, 'create']);
         Route::post('/add-categories', [CategoryController::class, 'store']);
+        Route::get('/edit-categories/{category}', [CategoryController::class, 'edit']);
+        Route::put('/update-categories/{category}', [CategoryController::class, 'update']);
+        Route::delete('/delete-categories/{category}', [CategoryController::class, 'destroy']);
+
+        // logout
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
     });
 });

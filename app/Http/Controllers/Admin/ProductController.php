@@ -68,8 +68,10 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $title = "E-Commerce | Form Ubah Data Produk";
+        $categories = Category::all();
         return view("admin.products.UbahProduct", [
             'title' => $title,
+            'categories' => $categories,
             'product' => $product
         ]);
     }
@@ -79,27 +81,35 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $validateData = $request->validate([
+        $rules = [
             'id_kategori' => 'required|exists:product_category,id_kategori',
             'name' => 'required|string',
             'description' => 'required|string',
             'stock' => 'required|integer',
-            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048'
-        ]);
+        ];
 
-        if($request->hasFile('image')) {
-            // Kalau ganti gambar, delete gambar dari database dan filenya.
-            if($request->gambarLama) {
-                Storage::delete($request->gambarLama);
+        // Tambahkan validasi untuk 'image' hanya jika ada file baru yang diunggah
+        if ($request->hasFile('image')) {
+            $rules['image'] = 'image|mimes:jpg,jpeg,png|max:2048';
+        }
+
+        $validatedData = $request->validate($rules);
+
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama jika ada
+            if ($product->image) {
+                Storage::disk('public')->delete('images/' . $product->image);
             }
+
+            // Simpan gambar baru
             $file = $request->file('image');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('images'), $filename);
 
-            $validateData['image'] = $filename;
+            $validatedData['image'] = $filename;
         }
 
-        $product->update($validateData);
+        $product->update($validatedData);
 
         return redirect('/admin/products')->with('success', 'Berhasil mengubah data produk!');
     }

@@ -47,36 +47,41 @@ class CategoryController extends Controller
 
         return redirect('/admin/categories')->with('success', 'Berhasil menambahkan kategori!');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $id)
-    {
-        //
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $id)
+    public function edit(Category $category)
     {
-        //
+        $title = "E-Commerce | Form ubah Kategori";
+
+        return view("admin.category.UbahKategori", [
+            'title' => $title,
+            'category' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|string',
+            'quantity' => 'required|integer'
+        ]);
+
+        $category->update($validateData);
+
+        return redirect("admin/categories")->with('success', 'Berhasil mengubah kategori!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect('/admin/categories')->with('delete', 'Berhasil menghapus data!');
     }
 }
