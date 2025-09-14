@@ -1,12 +1,62 @@
 @extends('customers.layouts.main')
 
 @section('content')
-    <div class="container px-4 px-lg-5 mt-5">
-                <div class="row-cols-2 row-cols-md-2 justify-content-center">
-                    <h1>Apakah konsol Playstation kamu rusak?</h1>
-                    <p>Langsung aja servis dengan klik tombol di bawah ini!</p>
-                    <a href="/pelanggan/servis" class="btn btn-primary">Servis!</a>
+    <section id="clothing" class="my-5 overflow-hidden">
+        <div class="container pb-5">
+
+            <div class="section-header d-md-flex justify-content-between align-items-center mb-3">
+                <h2 class="display-3 fw-normal">Our Product</h2>
+                <div>
+                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">
+                    shop now
+                    <svg width="24" height="24" viewBox="0 0 24 24" class="mb-1">
+                    <use xlink:href="#arrow-right"></use>
+                    </svg></a>
                 </div>
             </div>
-      </div>
+
+            <div class="products-carousel swiper">
+                <div class="swiper-wrapper">
+                    @foreach ($products as $item)
+                        <div class="swiper-slide">
+                            <div class="z-1 position-absolute rounded-3 m-3 px-3 border border-dark-subtle">
+                                New
+                            </div>
+                            <div class="card position-relative">
+                                <a href="/customer/detail-product/{{ $item->id_produk }}">
+                                    <img src="{{ asset('images/' . $item->image) }}" class="img-fluid rounded-4" alt="image">
+                                </a>
+                                <div class="card-body p-0">
+                                    <a href="single-product.html">
+                                        <h3 class="card-title pt-4 m-0">{{ $item->name }}</h3>
+                                    </a>
+                                    <div class="card-text">
+                                        <span class="rating secondary-font">
+                                            <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                                            <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                                            <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                                            <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                                            <iconify-icon icon="clarity:star-solid" class="text-primary"></iconify-icon>
+                                            5.0
+                                        </span>
+                                        <h3 class="secondary-font text-primary">$18.00</h3>
+                                        <div class="d-flex flex-wrap mt-3">
+                                            <a href="#" class="btn-cart me-3 px-4 pt-3 pb-3">
+                                                <h5 class="text-uppercase m-0">Add to Cart</h5>
+                                            </a>
+                                            <a href="#" class="btn-wishlist px-4 pt-3 ">
+                                                <iconify-icon icon="fluent:heart-28-filled" class="fs-5"></iconify-icon>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    {{-- Akhir dari loop --}}
+                </div>
+            </div>
+        <!-- / products-carousel -->
+        </div>
+    </section>
 @endsection

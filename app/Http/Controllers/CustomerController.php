@@ -8,18 +8,11 @@ use App\Models\Product;
 class CustomerController extends Controller
 {
     public function home() {
-        $title = "E-Commerce | Dashboard Customer";
-        return view("customers.layouts.home", [
-            "title" => $title
-        ]);
-    }
-
-    public function listproducts() {
         $products = Product::paginate(5);
-        $title = "E-Commerce | Our Products";
-        return view("customers.products.listproduct", [
+        $title = "NusaDigital | Dashboard Customer";
+        return view("customers.layouts.home", [
             "title" => $title,
-            "products" => $products
+            'products' => $products
         ]);
     }
 
@@ -34,5 +27,19 @@ class CustomerController extends Controller
         return view("customers.products.detailProduct", [
             "product" => $product
         ]);
+    }
+
+    public function click($id_produk) {
+        $product = Product::findOrFail($id_produk);
+        $product->click = $product->click + 1;
+        $product->save();
+
+        $no_wa = '6281818132011';
+
+        $text = 'Halo, saya mau beli ' . $product->name . ' dengan jumlah ' . $product->stock . 'buah';
+
+        $url = 'https://api.whatsapp.com/send?phone='.$no_wa.'&text='.urlencode($text);
+
+        return redirect()->away($url);
     }
 }

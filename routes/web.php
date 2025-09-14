@@ -10,7 +10,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -46,7 +46,10 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:customer'])->prefix('customer')->name('customer')->group(function () {
-    Route::get('/dashboard', [CustomerController::class, 'index'])->name('dashboard');
+    // Dashboard Customer
+    Route::get('/dashboard-customer', [CustomerController::class, 'home'])->name('dashboard-customer');
+    Route::get('/click/{id_produk}', [CustomerController::class, 'click']);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
 });
 
 require __DIR__.'/auth.php';
