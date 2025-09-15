@@ -36,7 +36,7 @@ class CustomerController extends Controller
 
         $no_wa = '6281818132011';
 
-        $text = 'Halo, saya mau beli ' . $product->name . ' dengan jumlah ' . $product->stock . 'buah';
+        $text = 'Halo, saya mau beli ' . $product->name . ' dengan jumlah ' . $product->stock . ' buah';
 
         $url = 'https://api.whatsapp.com/send?phone='.$no_wa.'&text='.urlencode($text);
 
